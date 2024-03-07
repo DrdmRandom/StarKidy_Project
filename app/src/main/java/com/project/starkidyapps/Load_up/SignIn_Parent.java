@@ -9,6 +9,6 @@ public class SignIn_Parent extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Memanggil layout XML nya
-        setContentView(R.layout.sign_in_parent);
+        setContentView(R.layout.login_parent);
     }
 }
