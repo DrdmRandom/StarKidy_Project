@@ -2,17 +2,145 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- non iterakteble asset -->
+    <ImageView
+        android:id="@+id/Backgorund_Star"
+        android:layout_width="116dp"
+        android:layout_height="388dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="584dp"
+        android:alpha="0.45"
+        android:rotation="260"
+        android:src="@drawable/star"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/Title"
+        android:id="@+id/signInTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is Sign Up page"
-        android:textSize="42sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Sign-Up"
+        android:textColor="#000000"
+        android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/conten"
+        android:layout_width="354dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="Let’s Create an account first"
+        android:textColor="#656565"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInTitle" />
+
+    <!-- Text input Gmail -->
+    <EditText
+        android:id="@+id/AccountInput"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="18dp"
+        android:hint=" Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/conten" />
+
+    <!-- Text input Nomor Telepon -->
+    <EditText
+        android:id="@+id/PhoneInput"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint=" Phone Number"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountInput" />
+
+    <!-- Text Input Password -->
+    <EditText
+        android:id="@+id/PasswordInputt"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneInput" />
+
+    <!-- comfirm password-->
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint="Confirm Password"
+        android:textColor="#00000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordInputt" />
+
+    <!-- Term of Condition CheckBox -->
+    <CheckBox
+        android:id="@+id/app_term"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.75"
+        android:text="I accept the Apps Terms  & Condition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+    <!-- School Term ChechBox -->
+    <CheckBox
+        android:id="@+id/school_term"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:alpha="0.75"
+        android:text="I accept the School Terms & Condition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_term" />
+
+    <!-- next in button -->
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_parent"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Next"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

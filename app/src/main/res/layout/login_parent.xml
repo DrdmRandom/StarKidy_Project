@@ -90,6 +90,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordInputt" />
 
+
+
     <Button
         android:id="@+id/btnParentSignIn"
         android:layout_width="360dp"
@@ -106,6 +108,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/bg_parent"
+        android:layout_width="727dp"
+        android:layout_height="441dp"
+        android:layout_marginTop="332dp"
+        android:alpha="0.45"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
