@@ -9,6 +9,6 @@ public class Sign_up extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Memanggil layout XML nya
-        setContentView(R.layout.sign_up);
+        setContentView(R.layout.sign_up_one);
     }
 }
