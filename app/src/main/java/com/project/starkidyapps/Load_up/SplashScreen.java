@@ -52,6 +52,7 @@ public class SplashScreen extends AppCompatActivity {
 
         // Add onClick listeners to buttons
         buttonParentSignIn.setOnClickListener(new View.OnClickListener() {
+            //buton sign in parent
             @Override
             public void onClick(View v) {
                 // Intent untuk pindah ke SignIn_Parent class
@@ -61,6 +62,7 @@ public class SplashScreen extends AppCompatActivity {
         });
 
         buttonTeacherSignIn.setOnClickListener(new View.OnClickListener() {
+            //button sing in employee
             @Override
             public void onClick(View v) {
                 // Intent untuk pindah ke SignIn_employee class
@@ -70,10 +72,11 @@ public class SplashScreen extends AppCompatActivity {
         });
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
+            //button sigup
             @Override
             public void onClick(View v) {
                 // Intent untuk pindah ke SignUp class
-                Intent intent = new Intent(SplashScreen.this, Sign_up.class);
+                Intent intent = new Intent(SplashScreen.this, SignUp.class);
                 startActivity(intent);
             }
         });

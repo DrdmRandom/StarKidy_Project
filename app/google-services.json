@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336455145622",
+    "project_id": "starkidyproject",
+    "storage_bucket": "starkidyproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336455145622:android:7bfc02c1445561c665cab7",
+        "android_client_info": {
+          "package_name": "com.project.starkidyapps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0ZRE7ECBVzIhzh5Bl2wVVcUmNcReA6Rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

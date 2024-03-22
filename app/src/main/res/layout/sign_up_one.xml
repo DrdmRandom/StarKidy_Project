@@ -96,7 +96,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:hint="Confirm Password"
-        android:textColor="#00000"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +111,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:alpha="0.75"
-        android:text="I accept the Apps Terms  & Condition"
+        android:text="I accept the Apps Terms  and Condition"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
 
@@ -122,9 +123,15 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:alpha="0.75"
-        android:text="I accept the School Terms & Condition"
+        android:text="I accept the School Terms and Condition"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_term" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <!-- next in button -->
     <Button
