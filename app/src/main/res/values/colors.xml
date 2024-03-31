@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="password_strength_very_weak">#e53935</color> <!-- Red -->
+    <color name="password_strength_weak">#fb8c00</color>      <!-- Orange -->
+    <color name="password_strength_good">#43a047</color>      <!-- Green -->
+    <color name="password_strength_strong">#1b5e20</color>    <!-- Dark green -->
 </resources>

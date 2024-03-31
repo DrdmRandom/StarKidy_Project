@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StarKidyApps</string>
+    <string name="password_strength_very_weak">Very Weak</string>
+    <string name="password_strength_weak">Weak</string>
+    <string name="password_strength_good">Good</string>
+    <string name="password_strength_strong">Strong</string>
 </resources>

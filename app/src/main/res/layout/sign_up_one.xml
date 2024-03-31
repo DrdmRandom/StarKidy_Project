@@ -89,7 +89,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PhoneInput" />
 
+    <!-- showng password strong or waek -->
+    <ProgressBar
+        android:id="@+id/passwordStrengthBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/confirm_password"
+        app:layout_constraintEnd_toEndOf="@+id/confirm_password"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+
     <!-- comfirm password-->
+    <TextView
+        android:id="@+id/passwordStrengthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Password Strength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordStrengthBar" />
+
     <EditText
         android:id="@+id/confirm_password"
         android:layout_width="360dp"
@@ -109,11 +135,10 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
         android:alpha="0.75"
         android:text="I accept the Apps Terms  and Condition"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordStrengthText" />
 
     <!-- School Term ChechBox -->
     <CheckBox
@@ -127,11 +152,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_term" />
 
+
+
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:indeterminateTint="@color/purple_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- next in button -->
     <Button

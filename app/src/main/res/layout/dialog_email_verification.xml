@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/verifyIcon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/verified"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvEmailVerificationMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please verify your Email in your [user email] Inbox."
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp" />
+
+</LinearLayout>
