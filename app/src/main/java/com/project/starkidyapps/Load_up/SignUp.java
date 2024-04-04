@@ -6,6 +6,7 @@
     import android.text.Editable;
     import android.text.TextUtils;
     import android.text.TextWatcher;
+    import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.widget.Button;
@@ -17,11 +18,12 @@
     import android.view.Gravity;
     import android.view.Window;
     import android.widget.LinearLayout;
-    import android.content.res.ColorStateList;
     import android.graphics.Color;
-    import android.widget.TextView;
     import android.graphics.PorterDuff;
     import androidx.core.content.ContextCompat;
+    import com.google.firebase.firestore.FirebaseFirestore;
+    import com.google.firebase.firestore.QuerySnapshot;
+    import com.google.firebase.firestore.DocumentSnapshot;
 
 
 
@@ -37,20 +39,22 @@
     import com.google.firebase.auth.AuthResult;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.auth.FirebaseUser;
+    import com.google.firebase.firestore.FirebaseFirestore;
     import com.project.starkidyapps.Main.MainScrean;
     import com.project.starkidyapps.R;
 
-
     public class SignUp extends AppCompatActivity {
 
-        EditText AccountInput, PhoneInput, PasswordInput, confirm_password;
+        EditText AccountInput, PhoneInput,SKidInput, PasswordInput, confirm_password;
         CheckBox app_term, school_term;
         Button btnNext;
         ProgressBar progressBar;
         ProgressBar passwordStrengthBar;
 
         FirebaseAuth mAuth;
+        FirebaseFirestore firestore;
 
+        private FirebaseFirestore db = FirebaseFirestore.getInstance();
         private TextView passwordStrengthView;
         private int[] passwordStrengthColors = {
                 Color.RED, // Very Weak
@@ -92,7 +96,7 @@
             PasswordInput.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                }//beforeTextChanged
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -105,37 +109,73 @@
                         passwordStrengthBar.setProgress(0);
                         passwordStrengthView.setText(""); // Assuming you have a TextView for the strength text
                     }
-                }
+                } // onTextChanged
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                }
-            });
+                } // afterTextChanged
+            }); //password input listerner
 
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     performSignUp();
                 }
-            });
+            });// onclick listener
         }
 
         private boolean isPhoneNumberValid(String phoneNumber) {
             return phoneNumber.startsWith("08") || phoneNumber.startsWith("+62");
-        }
+        } //isPhoneNumberValid
+
+        // Call this method after the user has signed up successfully
+        private void linkParentToChild(String parentEmail, String skId, String parentPhoneNumber) {
+            // Query the Firestore database to find the student document with the matching SK number
+            db.collection("students")
+                    .whereEqualTo("SK", skId)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                                // Found matching documents, process them
+                                for (DocumentSnapshot studentDoc : querySnapshot.getDocuments()) {
+                                    // Check if the phone number matches
+                                    if (parentPhoneNumber.equals(studentDoc.getString("parentPhoneNumber"))) {
+                                        // Update the student document with the parent's email
+                                        studentDoc.getReference().update("parentEmail", parentEmail)
+                                                .addOnSuccessListener(aVoid -> {
+                                                    Log.d("UpdateSuccess", "Parent email updated for student ID: " + skId);
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    Log.e("UpdateFailure", "Failed to update parent email", e);
+                                                });
+                                    }
+                                }
+                            } else {
+                                // No matching document, handle the case where the student ID does not exist
+                                Log.e("QueryEmpty", "No matching student document found for ID: " + skId);
+                            }
+                        } else {
+                            // The query failed, handle the error
+                            Log.e("QueryFailure", "Failed to perform query for student ID", task.getException());
+                        }
+                    });
+        } // linkParentToChild
 
         private void performSignUp() {
             progressBar.setVisibility(View.VISIBLE);
             String email = AccountInput.getText().toString().trim();
             String password = PasswordInput.getText().toString().trim();
             String confirmPassword = confirm_password.getText().toString().trim();
+            String skId = SKidInput.getText().toString().trim();
+            String phoneNumber = PhoneInput.getText().toString().trim();
 
-            if (!validateForm(email, password, confirmPassword)) {
+            if (!validateForm(email, password, confirmPassword, skId, phoneNumber)) {
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
-            String phoneNumber = PhoneInput.getText().toString().trim();
             if (!isPhoneNumberValid(phoneNumber)) {
                 Toast.makeText(SignUp.this, "Phone number must start with 08 or +62", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
@@ -146,39 +186,60 @@
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
-                                showVerificationPopup(email);
+                                // User is signed up, now link the SK ID and phone number
+                                linkParentToChild(email, skId, phoneNumber);
                                 sendEmailVerification();
                             } else {
+                                // If sign up fails, display a message to the user.
                                 Toast.makeText(SignUp.this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                            progressBar.setVisibility(View.GONE);
                         }
                     });
-        }
+        } // performSignUp
 
-        private boolean validateForm(String email, String password, String confirmPassword) {
+        private boolean validateForm(String email, String password, String confirmPassword, String skId, String phoneNumber) {
             boolean isValid = true;
+
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(SignUp.this, "Please Enter your Email", Toast.LENGTH_SHORT).show();
-                isValid = false;
-            } else if (TextUtils.isEmpty(password) || !isPasswordValid(password)) {
-                Toast.makeText(SignUp.this, "Password is Weak", Toast.LENGTH_SHORT).show();
-                isValid = false;
-            } else if (!password.equals(confirmPassword)) {
-                Toast.makeText(SignUp.this, "Password and Confirm Password do not match", Toast.LENGTH_SHORT).show();
-                isValid = false;
-            } else if (!app_term.isChecked() || !school_term.isChecked()) {
-                Toast.makeText(SignUp.this, "Please agree to the terms and conditions", Toast.LENGTH_SHORT).show();
+                AccountInput.setError("Please enter your email.");
                 isValid = false;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                PasswordInput.setError("Password is empty.");
+                isValid = false;
+            } else if (!isPasswordValid(password)) {
+                PasswordInput.setError("Password is weak.");
+                isValid = false;
+            } else if (!password.equals(confirmPassword)) {
+                confirm_password.setError("Password and confirm password do not match.");
+                isValid = false;
+            }
+
+            if (!app_term.isChecked() || !school_term.isChecked()) {
+                Toast.makeText(SignUp.this, "Please agree to the terms and conditions.", Toast.LENGTH_SHORT).show();
+                isValid = false;
+            }
+
+            if (TextUtils.isEmpty(skId) || !skId.toUpperCase().startsWith("SK")) {
+                SKidInput.setError("Student ID must start with 'SK'.");
+                isValid = false;
+            }
+
+            if (!isPhoneNumberValid(phoneNumber)) {
+                PhoneInput.setError("Phone number must start with 08 or +62.");
+                isValid = false;
+            }
+
             return isValid;
-        }
+        } //validateForm
 
         private void sendEmailVerification() {
             FirebaseUser user = mAuth.getCurrentUser();
             if (user != null) {
-                user.sendEmailVerification()
+                Task<Void> voidTask = user.sendEmailVerification()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -195,24 +256,26 @@
                             }
                         });
             }
-        }
+        } // sendEmailVerification
 
         private void initializeUI() {
             AccountInput = findViewById(R.id.AccountInput); // Input Email
             PhoneInput = findViewById(R.id.PhoneInput); // Input Phone Number
+            SKidInput = findViewById(R.id.SKidInput); // Input student ID
             PasswordInput = findViewById(R.id.PasswordInputt); // Input Password
             confirm_password = findViewById(R.id.confirm_password); // Input Confirm Password
 
             app_term = findViewById(R.id.app_term); // Checkbox App Term
             school_term = findViewById(R.id.school_term); // Checkbox School Term
 
-            btnNext = findViewById(R.id.btnNext); // Button Next
+            btnNext = findViewById(R.id.signUpButton); // Button Sign Up
 
             progressBar = findViewById(R.id.progressBar); // Progress Bar for loading
             passwordStrengthBar = findViewById(R.id.passwordStrengthBar); // Initialize the ProgressBar for Password Strength
 
-            // Initialize Firebase Auth
+            // Initialize Firebase
             mAuth = FirebaseAuth.getInstance();
+            firestore = FirebaseFirestore.getInstance();
 
             passwordStrengthView = findViewById(R.id.passwordStrengthText);
 
@@ -232,7 +295,7 @@
                     getString(R.string.password_strength_strong)
             };
 
-        }
+        } //initializeUI
 
 
         private boolean isPasswordValid(String password) {
@@ -245,7 +308,7 @@
             //boolean hasSpecialChar = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\|,.<>\\/?].*");
             // Check the password against each requirement
             return password.length() >= MIN_LENGTH && hasUppercase && hasLowercase && hasDigit; //&& hasSpecialChar;
-        }
+        } //isPasswordValid
 
         private int getPasswordStrength(String password) {
             int strengthPoints = 0;
@@ -256,7 +319,7 @@
             if (password.matches(".*[\\p{Punct}].*")) strengthPoints += 2; // Points for including symbols
             // Convert points to a percentage, assuming 10 is the max strength points
             return (strengthPoints * 100) / 10;
-        }
+        }// getPasswordStrength
 
         private void updatePasswordStrengthView(int strength) {
             int color = getColorForStrength(strength);
@@ -272,7 +335,7 @@
             } else {
                 passwordStrengthView.setText("Very Weak");
             }
-        }
+        } //updatePasswordStrengthView
 
         private int getColorForStrength(int strength) {
             if (strength > 75) {
@@ -284,7 +347,7 @@
             } else {
                 return passwordStrengthColors[0];
             }
-        }
+        } // getColorForStrength
 
         private void showVerificationPopup(String userEmail) {
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
@@ -318,8 +381,6 @@
             );
             layoutParams.gravity = Gravity.CENTER_HORIZONTAL; // This will center the button horizontally
             okButton.setLayoutParams(layoutParams);
-        }
+        }// showVerificationPopup
 
-
-
-    }
+    }// end of SignUp

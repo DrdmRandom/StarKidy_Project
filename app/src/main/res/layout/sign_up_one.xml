@@ -11,15 +11,14 @@
     <ImageView
         android:id="@+id/Backgorund_Star"
         android:layout_width="116dp"
-        android:layout_height="388dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="584dp"
+        android:layout_height="202dp"
+        android:layout_marginEnd="1dp"
         android:alpha="0.45"
         android:rotation="260"
+        android:scaleType="fitEnd"
         android:src="@drawable/star"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/signInTitle"
@@ -75,6 +74,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AccountInput" />
 
+    <!-- Text input Nomor SK as ID student -->
+    <EditText
+        android:id="@+id/SKidInput"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint=" Student ID                                (Start with SK)"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneInput" />
+
     <!-- Text Input Password -->
     <EditText
         android:id="@+id/PasswordInputt"
@@ -87,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneInput" />
+        app:layout_constraintTop_toBottomOf="@+id/SKidInput" />
 
     <!-- showng password strong or waek -->
     <ProgressBar
@@ -169,7 +182,7 @@
 
     <!-- next in button -->
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/signUpButton"
         android:layout_width="360dp"
         android:layout_height="52dp"
         android:layout_marginStart="5dp"
@@ -177,7 +190,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/button_parent"
         android:fontFamily="@font/roboto_medium"
-        android:text="Next"
+        android:text="Sign Up"
         android:textColor="@android:color/white"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
