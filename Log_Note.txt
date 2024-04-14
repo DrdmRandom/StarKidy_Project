@@ -1,0 +1,18 @@
+- Push Commit Ke 10 (14 April[04] 2024)
+Master Android Branch
+Commit ini menambagkag UI Home Screen untuk Parent, Annoucment card, dan Bottom navigation bar yang semua adalaha element dari home screen UI nya.
+untuk sekarang belum ada progress di code java nya karena untuk sekarang focus nya di UI dulu untuk semua di masukan dan di implemenrasi ke dalam code ini akar nanti developing code logic nya juga lebih mudah.
+
+Commited File:
+XML Code
+- announcement_card.xml
+- home_screen_parent.xml
+- bottom_navigation_menu.xml
+
+Directory
+- res/menu
+
+Java code
+- Null
+
+====================================================================================================
