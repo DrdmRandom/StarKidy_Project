@@ -39,7 +39,6 @@
     import com.google.firebase.auth.AuthResult;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.auth.FirebaseUser;
-    import com.google.firebase.firestore.FirebaseFirestore;
     import com.project.starkidyapps.Main.MainScrean;
     import com.project.starkidyapps.R;
 
@@ -80,7 +79,7 @@
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.sign_up_one);
+            setContentView(R.layout.sign_up);
 
             // Initialize UI components
             initializeUI();

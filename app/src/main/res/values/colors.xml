@@ -11,4 +11,5 @@
     <color name="password_strength_weak">#fb8c00</color>      <!-- Orange -->
     <color name="password_strength_good">#43a047</color>      <!-- Green -->
     <color name="password_strength_strong">#1b5e20</color>    <!-- Dark green -->
+    <color name="bottom_nav_icon_tint">#FEE8AF</color> <!-- Replace with your desired color -->
 </resources>
