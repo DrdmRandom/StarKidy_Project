@@ -1,0 +1,56 @@
+- Push Commit Ke 10 (14 April[04] 2024)
+Description:
+Commit ini menambagkah UI Home Screen untuk Parent, Annoucment card, dan Bottom navigation bar yang semua adalaha element dari home screen UI nya.
+untuk sekarang belum ada progress di code java nya karena untuk sekarang focus nya di UI dulu untuk semua di masukan dan di implemenrasi ke dalam code ini akar nanti developing code logic nya juga lebih mudah.
+
+Commited File:
+XML Code
+- announcement_card.xml
+- home_screen_parent.xml
+- bottom_navigation_menu.xml
+
+Directory
+- res/menu
+
+Java code
+- Null
+
+====================================================================================================
+# Push Commit ke 9 (4 April[4] 2024)
+Description:
+Adding Server Logic & UI
+
+Commited File
+- adding clinet handler
+- adding merver to the sign UP
+- Adding Student input ID to UI
+
+====================================================================================================
+# Push Commit Ke 8 (31 Maret[3] 2024)
+Description:
+adding Logic proggres to the code
+
+Commited File:
+ - adding Email Verification
+ - adding Password Checker
+ - adding Verification pop up dialog
+ - fixing Bug
+ - Adding Strong Password Chercker
+====================================================================================================
+#Push Commit ke 7 (22 Maret[3] 2024)
+Description:
+Logic & UI
+
+Commited File:
+#Logic
+  - Authenticator Logic
+  - Connecting Firebase
+  - Sign up Logic
+  - Sign In Parent Logic
+# UI
+  - sign_up_one.xml
+  - sign_up_two.xml
+  - login_employee.xml
+  - login_parent.xml
+  - main_screen.xml
+  - login_option.xml
