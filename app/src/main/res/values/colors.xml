@@ -12,4 +12,11 @@
     <color name="password_strength_good">#43a047</color>      <!-- Green -->
     <color name="password_strength_strong">#1b5e20</color>    <!-- Dark green -->
     <color name="bottom_nav_icon_tint">#FEE8AF</color> <!-- Replace with your desired color -->
+    <color name="purple_teacher">#EBAEFB</color>
+    <color name="yellow_parent">#FEE8AF</color>
+    <color name="light_gray">#DCDCDC</color>
+    <color name="your_tab_background_color">#FFFFFF</color> <!-- Example color -->
+    <color name="your_selected_tab_text_color">#000000</color> <!-- Example color -->
+    <color name="your_unselected_tab_text_color">#9E9E9E</color> <!-- Example color -->
+
 </resources>
