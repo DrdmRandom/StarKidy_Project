@@ -1,3 +1,9 @@
+Update information(23 april 2024)
+
+Finally Finis with the parent Home Screen but still no logic and not much back-end logic yet and now progressing on the Parent Schedule. right now still focusing on the Front End on the parens UI screen On the Android side.
+
+====================================================================================================
+
 - Push Commit Ke 10 to Master-Android Branch (14 April[04] 2024)
 Master-Android Branch
 
