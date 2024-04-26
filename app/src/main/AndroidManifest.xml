@@ -49,7 +49,12 @@
 
         <!-- main screen -->
         <activity
-            android:name=".Main.MainScrean"
+            android:name=".Main.MainScreen_Activity"
+            android:exported="true"/>
+
+        <!-- Schedule For parent -->
+        <activity
+            android:name=".Main.ScheduleForParent_Activity"
             android:exported="true"/>
 
         <meta-data

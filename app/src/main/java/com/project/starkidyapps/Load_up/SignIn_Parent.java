@@ -14,12 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.project.starkidyapps.Main.MainScrean;
+import com.project.starkidyapps.Main.MainScreen_Activity;
 import com.project.starkidyapps.R;
 
 public class SignIn_Parent extends AppCompatActivity{
@@ -31,14 +29,14 @@ public class SignIn_Parent extends AppCompatActivity{
     @Override
     public void onStart() {
         super.onStart();
+        mAuth = FirebaseAuth.getInstance(); // Inisialisasi FirebaseAuth
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainScrean.class);
-            startActivity(intent);
-            finish();
+        if (currentUser != null) {
+            redirectToMainScreen();
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +75,7 @@ public class SignIn_Parent extends AppCompatActivity{
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(SignIn_Parent.this,"Sign In Succesfull", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainScrean.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainScreen_Activity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
@@ -91,4 +89,12 @@ public class SignIn_Parent extends AppCompatActivity{
             }//onclick
         });//click listener
     }//On Create
+
+    //redirect Fucntion
+    private void redirectToMainScreen() {
+        Intent intent = new Intent(SignIn_Parent.this, MainScreen_Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }//redirect fucntion
 }//public class

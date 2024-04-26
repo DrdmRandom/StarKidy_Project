@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/report_card_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/dialog_color">
+
+    <TextView
+        android:id="@+id/report_Card_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Report Title - Day"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/report_detail_date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/report_Card_Title"
+        android:text="DD MM, Time" />
+
+    <TextView
+        android:id="@+id/report_detail_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/report_Card_Title"
+        android:layout_marginTop="12dp"
+        android:text="Activity Description"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_bold"/>
+
+    <TextView
+        android:id="@+id/report_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/report_detail_description_title"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/black"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+    <FrameLayout
+        android:id="@+id/image_Box"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/report_detail_description"
+        android:layout_marginTop="32dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/report_detail_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_holder"
+            android:alpha="0.4"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/report_detail_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/image_Box"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/report_detail_reply_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reply"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/report_detail_back_button"/>
+</RelativeLayout>

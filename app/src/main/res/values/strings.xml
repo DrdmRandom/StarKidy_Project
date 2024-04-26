@@ -4,4 +4,11 @@
     <string name="password_strength_weak">Weak</string>
     <string name="password_strength_good">Good</string>
     <string name="password_strength_strong">Strong</string>
+    <string name="default_user_name">\n</string>
+    <string-array name="sorting_options">
+        <item>All</item>
+        <item>Daily</item>
+        <item>Term</item>
+        <item>Portfolio</item>
+    </string-array>
 </resources>

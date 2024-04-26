@@ -19,4 +19,13 @@
     <color name="your_selected_tab_text_color">#000000</color> <!-- Example color -->
     <color name="your_unselected_tab_text_color">#9E9E9E</color> <!-- Example color -->
 
+    <!-- WeeksTabs Selesctore for Text -->
+    <color name="weekday_selected_text">#000000</color>
+    <color name="weekday_normal_text">#000000</color>
+
+    <!-- WeeksTabs Selesctore for Highlight -->
+    <color name="weeks_hight_light">#FEE8AF</color>
+
+    <!-- Color for report Card -->
+    <color name="dialog_color">#E9E8E8</color>
 </resources>

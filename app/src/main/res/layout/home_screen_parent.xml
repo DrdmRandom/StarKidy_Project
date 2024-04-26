@@ -32,6 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/LinearLayout_Proffile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -50,6 +51,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/profile_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -100,6 +102,8 @@
             <!-- Image for schedule Cardview -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_schedule"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 app:cardBackgroundColor="#25B201"
@@ -112,6 +116,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/image_schedule_card"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:scaleType="fitCenter"
@@ -159,6 +164,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/image_report_card"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:scaleType="fitCenter"
@@ -204,6 +210,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/image_attendace_card"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:scaleType="fitCenter"

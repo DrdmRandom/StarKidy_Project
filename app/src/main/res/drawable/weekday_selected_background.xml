@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/weeks_hight_light"/> <!-- Contoh warna kuning terang untuk background ketika terpilih -->
+    <corners android:radius="20dp"/> <!-- Radius sudut bulat -->
+</shape>

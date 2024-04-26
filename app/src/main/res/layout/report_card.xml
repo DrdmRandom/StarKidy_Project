@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/report_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="2dp"
+            android:text="Daily Report - Monday"
+            android:textSize="14dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <FrameLayout
+            android:id="@+id/image_placeholder"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/report_title"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/placeholder_shape">
+
+            <ImageView
+                android:id="@+id/report_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/image_holder"
+                android:alpha="0.6"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/report_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01 Jan, 12:00"
+            android:textSize="8dp"
+            android:layout_toEndOf="@id/image_placeholder"
+            android:layout_alignTop="@id/image_placeholder"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/circle_background"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/report_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A sleepover is a great treat for kids. Many schools use such an event as the culminating activity of the school year."
+            android:layout_toEndOf="@id/image_placeholder"
+            android:layout_below="@id/report_date_time"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

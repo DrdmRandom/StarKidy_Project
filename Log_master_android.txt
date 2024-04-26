@@ -1,3 +1,12 @@
+- Push Commit ke 11 (?)
+
+Desckription:
+This Commit still focusing on the Front end and bare bone animation but no Back End Logic Nor Server side logic, with now adding the Parent right now and the complition of Parent Home
+Screem, Schedule for parent, report for parent. so half way true with the parent UI as for the teacher, its psoible to duplicated it but we need to change some think to make sure the
+it meet the client requerment.
+
+====================================================================================================
+
 - Push Commit Ke 10 (14 April[04] 2024)
 Description:
 Commit ini menambagkah UI Home Screen untuk Parent, Annoucment card, dan Bottom navigation bar yang semua adalaha element dari home screen UI nya.

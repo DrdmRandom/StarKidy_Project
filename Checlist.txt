@@ -1,8 +1,8 @@
 UI Checklist
 X home screen parent
 X home screen teacher
-# Schedule for Parent
-# Report for Parent
+X Schedule for Parent
+X Report for Parent
 # Attendance Parent
 # Attendance Teacher (Today)
 # Attendance Teacher Detail (Today)

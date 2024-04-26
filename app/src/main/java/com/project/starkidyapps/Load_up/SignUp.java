@@ -39,7 +39,7 @@
     import com.google.firebase.auth.AuthResult;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.auth.FirebaseUser;
-    import com.project.starkidyapps.Main.MainScrean;
+    import com.project.starkidyapps.Main.MainScreen_Activity;
     import com.project.starkidyapps.R;
 
     public class SignUp extends AppCompatActivity {
@@ -70,7 +70,7 @@
             mAuth = FirebaseAuth.getInstance();
             FirebaseUser currentUser = mAuth.getCurrentUser();
             if(currentUser != null){
-                Intent intent = new Intent(getApplicationContext(), MainScrean.class);
+                Intent intent = new Intent(getApplicationContext(), MainScreen_Activity.class);
                 startActivity(intent);
                 finish();
             }
