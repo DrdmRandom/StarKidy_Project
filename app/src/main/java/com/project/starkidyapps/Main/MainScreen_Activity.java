@@ -8,16 +8,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.google.android.gms.tasks.Task;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.project.starkidyapps.Load_up.SplashScreen;
 import com.project.starkidyapps.R;
+
+import javax.annotation.Nullable;
 
 public class MainScreen_Activity extends AppCompatActivity {
    //for firebase
@@ -67,23 +77,42 @@ public class MainScreen_Activity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         user = auth.getCurrentUser();
+
+        profileName.setText("Test Name");
+
 
         if (user == null) {
             Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
             startActivity(intent);
             finish();
         } else {
-            profileName.setText(user.getDisplayName());
-            profileSubtitle.setText(user.getEmail());
-
-            // If the user's name is null or empty, you might want to set a placeholder
-            if (profileName.getText().toString().isEmpty()) {
-                profileName.setText(getString(R.string.default_user_name)); // default_user_name is a string resource
-            }
-
+            Query query = db.collection("student").whereEqualTo("parentEmail", user.getEmail());
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        boolean found = false;
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            if (document.exists()) {
+                                Log.d("Firestore", "Document ID: " + document.getId() + " Data: " + document.getData());
+                                profileName.setText(document.getString("name"));
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            Log.d("Firestore", "No documents found matching the criteria.");
+                            profileName.setText(getString(R.string.default_user_name));
+                        }
+                    } else {
+                        Log.d("Firestore", "Error getting documents: ", task.getException());
+                        profileName.setText(getString(R.string.default_user_name));
+                    }
+                }
+            });
         }
-
     }
 
     private void initCardSchedule() {

@@ -23,7 +23,7 @@ import java.util.List;
 public class ScheduleForParent_Activity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ScheduleAdapter adapter;
+//    private ScheduleAdapter adapter;
     private List<ActivityInfo> scheduleList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +96,8 @@ public class ScheduleForParent_Activity extends AppCompatActivity {
         // Contoh menambahkan data
         scheduleList.add(new ActivityInfo()); // Taruh pesan nya di dalan kurung nanti
 
-        adapter = new ScheduleAdapter(scheduleList);
-        recyclerView.setAdapter(adapter);
+//        adapter = new ScheduleAdapter(scheduleList);
+//        recyclerView.setAdapter(adapter);
         //END OF Schedule Recyccle view
     }//END OF onCreate
 
